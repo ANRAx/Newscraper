@@ -21,5 +21,16 @@ $(document).ready(function() {
         });
     }
 
-    
+    function renderArtcles(articles) {
+        // This function handles appending HTML with our article data to the page
+        // array of JSOn containing all avail. articles in our DB
+        let articleCards = [];
+        // pass each article JSOn obj. to the createCard function that returns bootstrap card with article data 
+        for (let i = 0; i < articles.length; i++) {
+            articleCards.push(createCard(articles[i]))
+        }
+        // once we have all HTML for articles stored in articleCards array, append them to the articleCards container
+        articleContainer.append(articleCards);
+    }
+
 })
