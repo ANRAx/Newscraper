@@ -58,5 +58,25 @@ $(document).ready(function() {
         return card;
     }
 
-    
+    function renderEmpty() {
+        // renders some HTML to page explaining no articles avail. to view
+        // uses a joined array of HTML string data because it's easier to read/change than a concatentated string
+        var emptyAlert = $(
+            [
+                "<div class='alert alert-warning text-center'>",
+                "<h4>Uh Oh. Looks like we don't have any saved articles.</h4>",
+                "</div>",
+                "<div class='card'>",
+                "<div class='card-header text-center'>",
+                "<h3>Would You Like to Browse Available Articles?</h3>",
+                "</div>",
+                "<div class='card-body text-center'>",
+                "<h4><a href='/'>Browse Articles</a></h4>",
+                "</div>",
+                "</div>"
+            ].join("")
+        );
+        // Appending this data to the page
+        articleContainer.append(emptyAlert);
+    }
 });
