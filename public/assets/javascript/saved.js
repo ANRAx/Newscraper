@@ -22,7 +22,20 @@ $(document).ready(function() {
         });
     }
 
+    function renderArticles(articles) {
+        // Handles appending HTML containing our article data to the page, then passes an array of JSON containing all available articles in our DB
+        let articleCards = [];
+
+        // pass each article JSON object to createCard function to returm Bootstrap card with our article data inside
+        for (let i = 0; i < articles.length; i++) {
+            articleCards.push(createCard(articles[i]));
+        }
+
+        // once all HTML for articles are stored in artCards array, append to articleCards container
+        articleContainer.append(articleCards);
+    }
+
     function createCard(params) {
         
     }
-})
+});

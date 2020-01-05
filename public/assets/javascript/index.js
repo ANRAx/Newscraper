@@ -78,7 +78,7 @@ $(document).ready(function() {
         articleContainer.append(emptyAlert);
     }
 
-    function handleArticlesSave() {
+    function handleArticleSave() {
         // Triggered when the user want to save an article
         // When article is rendered intially, a js obj. with the headline id to the element using the .data method. It is retreived here
         let articleToSave  = $(this)
