@@ -114,5 +114,10 @@ $(document).ready(function() {
         });
     }
 
-    
+    function handleArticleClear() {
+        $.get("api/clear").then(function() {
+            articleContainer.empty();
+            initPage();
+        });
+    }
 });
