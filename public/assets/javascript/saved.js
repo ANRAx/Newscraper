@@ -35,7 +35,28 @@ $(document).ready(function() {
         articleContainer.append(articleCards);
     }
 
-    function createCard(params) {
-        
+    function createCard(article) {
+        // takes single JSON object for art/headline, constructs a jQuery element with all formatted HTML for the art. card
+        let card = $("<div class='card'>");
+        let cardHeader = $("<div class='card-header'>").append(
+            $("<h3>").append(
+                $("<a class='article-link' target='_blank' rel='noopener noreferrer'>")
+                    .attr("href", article.url)
+                    .text(article.headline),
+                $("<a class='btn btn-danger delete'>Delete From Saved</a>"),
+                $("<a class='btn btn-info notes'>Article Notes</a>")
+            )
+        );
+
+        let cardBody = $("<div class='card-body'>").text(article.summary);
+
+        card.append(cardHeader, cardBody);
+
+        // attach art. id to jQuery element (used when trying to figure out which article user wants to remove or open notes for)
+        card.data("_id", article._id);
+        // return constructed card jQUery element
+        return card;
     }
+
+    
 });
