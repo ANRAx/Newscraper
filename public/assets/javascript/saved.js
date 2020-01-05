@@ -130,5 +130,57 @@ $(document).ready(function() {
         });
     }
 
+    function handleArticleNotes(event) {
+        // Handles opening the notes modal by grabbing id of arts to get notes for from the card element the delete btn sits inside
+        let currentArticle = $(this)
+            .parents(".card")
+            .data();
+        
+        // Grab notes with this headline/article id 
+        $.get("/api/notes/" + currentArticle._id).then(function(data) {
+            // Contstructing our initial HTML to add to notes modal
+            let modalText = $("<div class='container-fluid text-center'>").append(
+                $("<h4>").text("Notes For Article: " + currentArticle._id),
+                $("<hr>"),
+                $("<ul class='list-group note-container'>"),
+                $("<textarea placeholder='New Note' rows='4' cols='60'>"),
+                $("<button class='btn btn-success save'>Save Note</button>")
+            );
+            // Add formatted HTML to the note modal 
+            bootbox.dialog({
+                message: modalText,
+                closeButton: true
+            });
+
+            let noteData = {
+                _id: currentArticle._id,
+                notes: data || []
+            };
+            
+            // Add infor about the arts and their note to the save button for easy accees when adding a new note
+            $(".btn.save").data("article", noteData);
+
+            // renderNotesList populates the actual note HTML inside of the modal just created/opened
+            renderNotesList(nodeData);
+        });
+    }
+
+    function handleNoteSave() {
+        // handles what happens when user tires to save new note for art.
+        // Sets a var to hold some formatted data about the note then grabs note typed into the input box
+        let noteData;
+        let newNote = $(".bootbox-body textarea")
+            .val()
+            .trim();
+        // format and post data typed into note input field to the "/api/notes" route and send 
+        if (newNote) {
+            noteData = { _headlineId: $(this).data("article")._id, noteText: newNote };
+            $.post("/api/notes", noteData).then(function() {
+                // When complete, close the modal
+                bootbox.hideAll();
+            });
+        }
+    }
+
     
 });
