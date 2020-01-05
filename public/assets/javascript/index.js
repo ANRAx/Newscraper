@@ -21,7 +21,7 @@ $(document).ready(function() {
         });
     }
 
-    function renderArtcles(articles) {
+    function renderArticles(articles) {
         // This function handles appending HTML with our article data to the page
         // array of JSOn containing all avail. articles in our DB
         let articleCards = [];
@@ -33,4 +33,26 @@ $(document).ready(function() {
         articleContainer.append(articleCards);
     }
 
-})
+    function createCard(article) {
+        // This function takes in a single JSON object for an article/headline
+        // Then constructs a jQuery element with the formatted HTML for aricle card
+        let card = $("<div class='card'>");
+        let cardHeader = $("<div class='card-header'>").append(
+            $("<h3>").append(
+                $("<a class='article-link' target='_blank' rel='noopener noreferrer'>")
+                    .attr("href", article.url)
+                    .text(article.headline),
+                $("<a class='btn btn-success save'>Save Article</a>")
+            )
+        );
+
+        let cardBody = $("<div class='card-body'>").text(article.summary);
+
+        card.append(cardHeader, cardBody);
+        // attach article's id to the jQuery element and use when tryuing to figure out which article the user wants to save
+        card.data("_id", article._id);
+        // return constructed card jQuery element
+        return card;
+    }
+
+});
