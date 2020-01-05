@@ -78,5 +78,30 @@ $(document).ready(function() {
         articleContainer.append(emptyAlert);
     }
 
-    
+    function handleArticlesSave() {
+        // Triggered when the user want to save an article
+        // When article is rendered intially, a js obj. with the headline id to the element using the .data method. It is retreived here
+        let articleToSave  = $(this)
+            .parents(".card")
+            .data();
+
+        // Remove card from page
+        $(this)
+            .parents(".card")
+            .remover();
+        
+        articleToSave.saved = true;
+        // using a patch method to be semantic since this is an update to an eisting record in our collection 
+        $.ajax({
+            method: "PUT",
+            url: "/api/headlines/" + articleToSave._id,
+            data: articleToSave
+        }).then(function(data) {
+            // If the data was saved successfully
+            if (data.saved) {
+                // Run the init page function again to reload the entire list of articles
+                initPage();  
+            }
+        });
+    }
 });
