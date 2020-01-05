@@ -84,15 +84,15 @@ $(document).ready(function() {
         // This function handles rendering note list items to our notes modal
         // Setting up an array of notes to render after finished
         // Also setting up a currentNote variable to temporarily store each note
-        var notesToRender = [];
-        var currentNote;
+        let notesToRender = []; 
+        let currentNote;
         if (!data.notes.length) {
             // If we have no notes, just display a message explaining this
             currentNote = $("<li class='list-group-item'>No notes for this article yet.</li>");
             notesToRender.push(currentNote);
         } else {
             // If we do have notes, go through each one
-            for (var i = 0; i < data.notes.length; i++) {
+            for (let i = 0; i < data.notes.length; i++) {
                 // Constructs an li element to contain our noteText and a delete button
                 currentNote = $("<li class='list-group-item note'>")
                     .text(data.notes[i].noteText)
@@ -105,6 +105,29 @@ $(document).ready(function() {
         }
         // Now append the notesToRender to the note-container inside the note modal
         $(".note-container").append(notesToRender);
+    }
+
+    function handleArticleDelete() {
+        // handles deleting articles/headlines by grabbing id of arts to delete from the card element the delete btn sits inside 
+        let articleToDelete = $(this)
+            .parents(".card")
+            .data();
+
+        // Remove card from page 
+        $(this)
+            .parents(".card")
+            .remove();
+        
+        // Using a delete method here just to be semantic since we are deleting and article/headline 
+        $.ajax({
+            method: "DELETE",
+            url: "/api/headlines/" + articleToDelete._id
+        }).then(function(data) {
+            // If it works properly, re-render our list of saved articles 
+            if (data.ok) {
+              initPage();
+            }
+        });
     }
 
     
