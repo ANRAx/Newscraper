@@ -104,4 +104,15 @@ $(document).ready(function() {
             }
         });
     }
+
+    function handleArticleScrape() {
+        // This function handles the user clicking "scrape new article" buttons
+        $.get("/api/fetch").then(function(data) {
+            // Once scraped, re-render the articles on the page and let user know how many were saved
+            initPage();
+            bootbox.alert($("<h3 class='text-center m-top-80>").text(data.message));
+        });
+    }
+
+    
 });
