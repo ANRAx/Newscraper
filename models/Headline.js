@@ -27,7 +27,7 @@ let headlinesSchema = new Schema({
     // date is just a string
     date: {
         type: Date,
-        default: false
+        default: Date.now
     },
     saved: {
         type: Boolean,

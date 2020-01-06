@@ -6,7 +6,7 @@ let db = require("../models");
 module.exports = {
     // Find one note
     find: function(req, res) {
-        db.Note.find({ _headlineId: req.params.id}).then(function(dbNote) {
+        db.Note.find({ _headlineId: req.params.id }).then(function(dbNote) {
             res.json(dbNote);
         });
     },
