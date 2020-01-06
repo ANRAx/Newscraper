@@ -88,7 +88,7 @@ $(document).ready(function() {
         // Remove card from page
         $(this)
             .parents(".card")
-            .remover();
+            .remove();
         
         articleToSave.saved = true;
         // using a patch method to be semantic since this is an update to an eisting record in our collection 
