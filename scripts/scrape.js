@@ -28,6 +28,8 @@ let scrape = function() {
                 .find("p")
                 .text()
                 .trim();
+            
+            // Grab summary of the article
             let sum = $(this)
                 .find("p")
                 .text()

@@ -182,6 +182,17 @@ $(document).ready(function() {
         }
     }
 
+    function handleNoteDelete() {
+        // handles deletion of notes by grabbing id of the note, storing data on the delete button, and performing a delte request to "/api/notes"
+        let noteToDelete = $(this).data("_id");
+        $.ajax({
+            url: "/api/notes/" + noteToDelete,
+            method: "DELETE"
+        }).then(function() {
+            bootbox.hideAll();
+        });
+    }
+
     function handleArticleClear() {
         $.get("api/clear")
             .then(function() {

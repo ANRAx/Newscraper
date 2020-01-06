@@ -15,8 +15,13 @@ let routes = require("./routes");
 // Parse thru request body as JSON
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+
 // Make public a static folder 
 app.use(express.static("public"));
+
+// Connect Handlebars to express app
+app.engine("handlebars", exhphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 // make each request go thru route middleware
 app.use(routes);
