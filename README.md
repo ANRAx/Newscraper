@@ -25,7 +25,7 @@ This project is a web application that lets user view and leave comments on the 
     
 ## How to Use
 
-    You can use the application simply by clicking <a href="https://ancient-bayou-49290.herokuapp.com/">here</a>. 
+You can use the application simply by clicking <a href="https://ancient-bayou-49290.herokuapp.com/">here</a>. 
 
     Alternativley, you can do the following: 
         - Clone the repository with `git clone <repo>`
