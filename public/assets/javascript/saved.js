@@ -161,7 +161,7 @@ $(document).ready(function() {
             $(".btn.save").data("article", noteData);
 
             // renderNotesList populates the actual note HTML inside of the modal just created/opened
-            renderNotesList(nodeData);
+            renderNotesList(noteData);
         });
     }
 
