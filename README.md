@@ -27,7 +27,8 @@ This project is a web application that lets user view and leave comments on the 
 
 You can use the application simply by clicking <a href="https://ancient-bayou-49290.herokuapp.com/">here</a>. 
 
-    Alternativley, you can do the following: 
+Alternativley, you can do the following: 
+
         - Clone the repository with `git clone <repo>`
         - In the root, run the following `npm install`
         - In the terminal run `node server.js`
