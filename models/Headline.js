@@ -6,8 +6,8 @@ let mongoose = require("mongoose");
 // Create schema class using a mongoose's schema method
 let Schema = mongoose.Schema;
 
-// Create the headlinesSchema with our schema class
-let headlinesSchema = new Schema({
+// Create the headlineSchema with our schema class
+let headlineSchema = new Schema({
     // A String (headline) must be entered
     headline: {
         type: String,
@@ -35,6 +35,6 @@ let headlinesSchema = new Schema({
     }
 });
 
-let Headline = mongoose.model("Headline", headlinesSchema);
+let Headline = mongoose.model("Headline", headlineSchema);
 
 module.exports = Headline;

@@ -46,6 +46,8 @@ $(document).ready(function() {
             )
         );
 
+        
+
         let cardBody = $("<div class='card-body'>").text(article.summary);
 
         card.append(cardHeader, cardBody);

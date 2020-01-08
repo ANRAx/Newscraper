@@ -1,6 +1,5 @@
 // CONTROLLER FOR HEADLINES
 // ====================================
-
 let db = require("../models");
 
 module.exports = {
