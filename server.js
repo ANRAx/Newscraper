@@ -30,7 +30,7 @@ app.set("view engine", "handlebars");
 app.use(routes);
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-let MONGODB_URI = process.env.MONGODB_URI || "mongodb://usertest1:passwordtest1@ds139352.mlab.com:39352/heroku_wxgpns9j";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
