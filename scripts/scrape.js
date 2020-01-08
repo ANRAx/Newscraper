@@ -25,9 +25,8 @@ let scrape = function() {
 
             // Grab the URL of the article
             let url = $(this)
-                .find("p")
-                .text()
-                .trim();
+                .find("a")
+                .attr("href");
             
             // Grab summary of the article
             let sum = $(this)
