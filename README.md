@@ -34,3 +34,4 @@ Alternativley, you can do the following:
         - In the terminal run `node server.js`
         - Head to your browser and search `localhost:3000` in the address bar 
     
+Enjoy!
